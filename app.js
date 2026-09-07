@@ -476,7 +476,17 @@
     }
   }
 
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) return;
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js").catch(function (err) {
+        console.warn("Service worker registration failed:", err);
+      });
+    });
+  }
+
   initMap();
   bindUi();
   requestLocation();
+  registerServiceWorker();
 })();

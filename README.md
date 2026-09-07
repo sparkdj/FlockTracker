@@ -25,6 +25,9 @@ Mobile-friendly single-page map that shows **nearby ALPR / license-plate cameras
 | `index.html` | App shell |
 | `styles.css` | Mobile-first layout |
 | `app.js` | Geolocation, Overpass, Leaflet UI |
+| `manifest.webmanifest` | PWA manifest (name, icons, standalone) |
+| `sw.js` | Service worker (installability + shell cache) |
+| `icons/` | App icons (192, 512, apple-touch) |
 
 No build step — plain static files.
 
@@ -49,6 +52,16 @@ You can also open `index.html` directly in a browser, but **geolocation and Over
 Deployed from branch `main` / folder `/` (repo is public).
 
 **https://sparkdj.github.io/FlockTracker/**
+
+
+## Install as an app (PWA)
+
+The live site is a Progressive Web App. After opening **https://sparkdj.github.io/FlockTracker/** once:
+
+- **iPhone (Safari):** tap **Share** → **Add to Home Screen** → Add. Open from the Home Screen icon for a full-screen (standalone) experience.
+- **Android (Chrome):** open the browser menu (⋮) → **Install app** or **Add to Home screen**. Or use the install banner if shown.
+
+Requires HTTPS (GitHub Pages provides this). A service worker is registered so the app meets install criteria; shell assets are cached for offline open of the UI (map tiles and Overpass still need network).
 
 ## Privacy
 
