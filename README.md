@@ -46,7 +46,7 @@ You can also open `index.html` directly in a browser, but **geolocation and Over
 
 ## GitHub Pages
 
-If Pages is enabled for this repo (deploy from `main` / root), the public URL is:
+Deployed from branch `main` / folder `/` (repo is public).
 
 **https://sparkdj.github.io/FlockTracker/**
 
