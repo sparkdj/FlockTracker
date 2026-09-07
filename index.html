@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="FlockTracker — map nearby ALPR / Flock Safety cameras from OpenStreetMap data" />
+  <title>FlockTracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <h1>FlockTracker</h1>
+      </div>
+      <div class="controls">
+        <label class="radius-control" for="radius">
+          Radius
+          <select id="radius" aria-label="Search radius">
+            <option value="3000">3 km</option>
+            <option value="5000">5 km</option>
+            <option value="8000" selected>8 km</option>
+            <option value="10000">10 km</option>
+            <option value="15000">15 km</option>
+            <option value="25000">25 km</option>
+          </select>
+        </label>
+        <button type="button" id="btn-refresh" class="btn" title="Refresh cameras">↻</button>
+        <button type="button" id="btn-locate" class="btn" title="Center on me">◎</button>
+        <button type="button" id="btn-toggle-list" class="btn btn-list" aria-expanded="false" aria-controls="sheet">List</button>
+      </div>
+    </header>
+
+    <main id="map" role="application" aria-label="Map of nearby ALPR cameras"></main>
+
+    <div id="status" class="status" role="status" aria-live="polite">Locating you…</div>
+
+    <aside id="sheet" class="sheet" aria-label="Nearby cameras">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-header">
+        <h2>Nearby cameras</h2>
+        <span id="camera-count" class="badge">—</span>
+      </div>
+      <ul id="camera-list" class="camera-list"></ul>
+      <p id="list-empty" class="list-empty hidden">No ALPR cameras found in this radius. OSM coverage varies by area.</p>
+    </aside>
+
+    <footer class="disclaimer">
+      <details>
+        <summary>Data &amp; disclaimer</summary>
+        <p>
+          FlockTracker uses <strong>crowdsourced OpenStreetMap</strong> data via the Overpass API.
+          Coverage is incomplete and may be outdated or inaccurate. This is <em>not</em> an official
+          Flock Safety product and does not access any private camera networks.
+        </p>
+        <p>
+          Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+          contributors (ODbL). Tiles © OpenStreetMap.
+        </p>
+      </details>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
